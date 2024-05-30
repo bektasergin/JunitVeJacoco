@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="tr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>TaskWebService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">YOVA-Final-HR220031-Bektas-Ergin</a> &gt; <a href="index.source.html" class="el_package">com.example.demo</a> &gt; <span class="el_source">TaskWebService.java</span></div><h1>TaskWebService.java</h1><pre class="source lang-java linenums">package com.example.demo;
+
+import java.util.*;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping(&quot;/task&quot;)
+<span class="fc" id="L8">public class TaskWebService {</span>
+	
+<span class="pc" id="L10">	public record Task (String nameTask) {}</span>
+	
+<span class="fc" id="L12">	private static List&lt;Task&gt; TASKS = new ArrayList&lt;&gt;();</span>
+	static {
+<span class="fc" id="L14">		TASKS.add(new Task(&quot;Dosyaları toplamak.&quot;));</span>
+<span class="fc" id="L15">		TASKS.add(new Task(&quot;Projeyi test etmek.&quot;));</span>
+<span class="fc" id="L16">	}</span>
+	
+	@GetMapping(&quot;/&quot;)
+	public List&lt;Task&gt; listTask(){
+<span class="fc" id="L20">		return TASKS;</span>
+	}
+	
+	@PostMapping(&quot;/&quot;)
+	public void addTask(@RequestBody Task newTask) {
+<span class="fc" id="L25">		TASKS.add(newTask);</span>
+<span class="fc" id="L26">	}</span>
+	
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
